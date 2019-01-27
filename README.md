@@ -34,7 +34,7 @@ yarn release
 
 ## Authors
 
-- **Shinudesu** - _Initial work_ - [PurpleBooth](https://github.com/Shinudesu)
+- **Shinudesu** - _Initial work_ - [Shinudesu](https://github.com/Shinudesu)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
