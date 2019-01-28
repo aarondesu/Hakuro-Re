@@ -19,10 +19,11 @@ copyright: "Copyright 2019 @ Shinudesu"
 asar: true
 win:
   target: "NSIS"
-files:
+files: [
   "src",
   "build",
   "*.js"
+  ]
 nsis:
   oneClick: false
   perMachine: true
