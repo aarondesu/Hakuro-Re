@@ -10,6 +10,8 @@ A desltop application for reading/viewing/downloading Manga. Intended for learni
 NodeJs 11.8.0
 ```
 
+Create electron-builder.yaml file(Stuff required for electron-builder/electron-updater), and replace the following:
+
 ```
 appId: "com.electron.hakuro"
 productName: "Hakuro",
