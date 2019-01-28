@@ -30,6 +30,13 @@ const createWindow = () => {
     }
   });
 
+  // Window handlers
+  mainWindow.on("closed", () => (mainWindow = null));
+  mainWindow.webContents.on("did-finish-load", () => mainWindow.show());
+
+  // Disable menu
+  mainWindow.setMenu(null);
+
   // Load the content
   mainWindow.loadURL(
     NODE_ENV === "development"
@@ -41,17 +48,31 @@ const createWindow = () => {
         })
   );
 
-  // Window handlers
-  mainWindow.on("closed", () => (mainWindow = null));
-  mainWindow.webContents.on("did-finish-load", () => mainWindow.show());
-  process.on("uncaughtException", err => {
-    log.error(err);
-  });
-
   // Initialize devtools
-  mainWindow.webContents.openDevTools();
   if (NODE_ENV === "development") {
-    // Test
+    log.info("Starting application in development mode...");
+    log.info("Initializing devtools...");
+
+    const {
+      default: installExtension,
+      REACT_DEVELOPER_TOOLS,
+      REDUX_DEVTOOLS
+    } = require("electron-devtools-installer");
+    const forceDownload = !!process.env.UPRADE_EXTENSIONS;
+
+    const installExt = (tool, force) => {
+      installExtension(tool, force)
+        .then(name => log.info(`${name} has been installed!`))
+        .catch(error =>
+          log.error(`Failed to install extension. Reason: ${error}`)
+        );
+    };
+
+    installExt(REACT_DEVELOPER_TOOLS, forceDownload);
+    installExt(REDUX_DEVTOOLS, forceDownload);
+
+    mainWindow.webContents.openDevTools();
+    log.info("Devtools installed!");
   }
 
   windowState.manage(mainWindow);

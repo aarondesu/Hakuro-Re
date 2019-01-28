@@ -10,6 +10,36 @@ A desltop application for reading/viewing/downloading Manga. Intended for learni
 NodeJs 11.8.0
 ```
 
+```
+appId: "com.electron.hakuro"
+productName: "Hakuro",
+copyright: "Copyright 2019 @ Shinudesu"
+asar: true
+win:
+  target: "NSIS"
+files:
+  "src"
+  "build"
+  "*.js"
+nsis:
+  oneClick: false
+  perMachine: true
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  runAfterFinish: true
+  license: "LICENSE"
+  deleteAppDataOnUninstall: true
+directories:
+  output: "release"
+publish:
+  provider: github
+  owner: "Shinudesu"
+  repo: "Hakuro-Re"
+  token: <your GH_TOKEN>
+```
+
+`GH_TOKEN` can be generated from developer settings. [Full Guide](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
+
 ### Installing
 
 ```

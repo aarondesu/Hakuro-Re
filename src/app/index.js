@@ -1,13 +1,30 @@
 import React from "react";
-import ReactDom from "react-dom";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { AppContainer } from "react-hot-loader";
+import { HashRouter } from "react-router-dom";
 
-const Index = () => {
-  return (
-    <div>
-      <h1>Hello World!</h1>
-      {process.env.NODE_ENV}
-    </div>
+import Application from "./app";
+import { store } from "./store";
+
+const renderApplication = Application => {
+  ReactDOM.render(
+    <AppContainer>
+      <HashRouter>
+        <Provider store={store}>
+          <Application />
+        </Provider>
+      </HashRouter>
+    </AppContainer>,
+    document.getElementById("app")
   );
 };
 
-ReactDom.render(<Index />, document.getElementById("app"));
+renderApplication(Application);
+
+if (module.hot) {
+  module.hot.accept("./app", () => {
+    const nextApp = require("./app").default;
+    renderApplication(nextApp);
+  });
+}
