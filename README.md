@@ -20,8 +20,8 @@ asar: true
 win:
   target: "NSIS"
 files:
-  "src"
-  "build"
+  "src",
+  "build",
   "*.js"
 nsis:
   oneClick: false
