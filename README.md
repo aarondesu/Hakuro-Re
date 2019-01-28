@@ -14,7 +14,7 @@ Create electron-builder.yaml file(Stuff required for electron-builder/electron-u
 
 ```
 appId: "com.electron.hakuro"
-productName: "Hakuro",
+productName: "Hakuro"
 copyright: "Copyright 2019 @ Shinudesu"
 asar: true
 win:
