@@ -7,5 +7,6 @@ module.exports = merge(common, {
   devServer: {
     stats: "errors-only",
     hot: true
-  }
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 });

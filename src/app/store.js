@@ -2,12 +2,18 @@ import thunk from "redux-thunk";
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import { tempReducer } from "./reducers/template_reducer";
+import { mangaList, mangaInfo } from "./reducers/manga_reducers";
 
 const initialState = {
-  tempReducer: []
+  mangaList: {},
+  mangaInfo: {}
 };
-const reducers = combineReducers({ tempReducer: tempReducer });
+
+const reducers = combineReducers({
+  mangaList: mangaList,
+  mangaInfo: mangaInfo
+});
+
 const storeEnhancers = composeWithDevTools(applyMiddleware(thunk));
 
 export const store = createStore(reducers, initialState, storeEnhancers);

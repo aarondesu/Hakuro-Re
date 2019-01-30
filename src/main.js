@@ -24,6 +24,7 @@ const createWindow = () => {
     minWidth: 800,
     minHeight: 600,
     show: false,
+    autoHideMenuBar: true,
     webPreferences: {
       devTools: true,
       webSecurity: false
@@ -35,7 +36,7 @@ const createWindow = () => {
   mainWindow.webContents.on("did-finish-load", () => mainWindow.show());
 
   // Disable menu
-  mainWindow.setMenu(null);
+  // mainWindow.setMenu(null);
 
   // Load the content
   mainWindow.loadURL(

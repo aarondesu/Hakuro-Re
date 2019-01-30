@@ -7,6 +7,8 @@ import { HashRouter } from "react-router-dom";
 import Application from "./app";
 import { store } from "./store";
 
+import "./res/scss/app.scss";
+
 const renderApplication = Application => {
   ReactDOM.render(
     <AppContainer>
